@@ -12,6 +12,18 @@ code {
     monospace;
 }
 
+.card-content{
+    font-style: italic;
+}
+.card-heading{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.card-description{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
 .form{
     padding: 15px 20px;
 }

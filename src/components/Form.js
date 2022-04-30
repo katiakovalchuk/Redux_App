@@ -23,6 +23,8 @@ const Form = () => {
             id: Date.now().toString()
         }
         dispatch(addBook(newBook));
+        alert('Book has been saved!');
+        setBook(initialState);
     }
 
     return (
@@ -54,15 +56,14 @@ const Form = () => {
                         setBook(prev => ({...prev, description: e.target.value}))
                     }}
                 />
-                <Box sx={{m: 2}}>
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                    >
-                        Save book
-                    </Button>
-                </Box>
+                <Button
+                    sx={{m: 2}}
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                >
+                    Save book
+                </Button>
             </form>
         </Box>
     )

@@ -5,7 +5,7 @@ import {deleteBook, editBook} from "../store/actions/actions";
 import '../index.css';
 
 import {Card, CardContent, Typography} from '@material-ui/core';
-import {Box, Button, TextField} from "@mui/material";
+import {Button, TextField} from '@mui/material';
 import {DeleteOutline, EditOutlined} from '@material-ui/icons';
 
 const Book = ({book, idx}) => {
@@ -56,64 +56,63 @@ const Book = ({book, idx}) => {
                                 value={data.description}
                                 onChange={e => setData(prev => ({...prev, description: e.target.value}))}
                             />
-                            <Box sx={{m: 2}}>
-                                <Button
-                                    variant="outlined"
-                                    endIcon={<EditOutlined/>}
-                                    style={{
-                                        backgroundColor: "rgb(248,250,244)",
-                                    }}
-                                    onClick={() => handleEditBook(book)}
-                                >
-                                    Save
-                                </Button>
-                                <Button
-                                    variant="outlined"
-                                    endIcon={<DeleteOutline/>}
-                                    style={{
-                                        borderColor: "rgba(236,5,5,0.54)",
-                                        color: "rgb(236,5,5,0.54)",
-                                        backgroundColor: "rgb(221,232,238)",
-                                    }}
-                                    onClick={() => setEdit(false)}
-                                >
-                                    Cancel
-                                </Button>
-                            </Box>
+                            <Button
+                                sx={{mx: 3, mt: 3}}
+                                variant="outlined"
+                                endIcon={<EditOutlined/>}
+                                style={{
+                                    backgroundColor: "rgb(248,250,244)",
+                                }}
+                                onClick={() => handleEditBook(book)}
+                            >
+                                Save
+                            </Button>
+                            <Button
+                                sx={{mt: 3}}
+                                variant="outlined"
+                                endIcon={<DeleteOutline/>}
+                                style={{
+                                    borderColor: "rgba(236,5,5,0.54)",
+                                    color: "rgb(236,5,5,0.54)",
+                                    backgroundColor: "rgb(221,232,238)",
+                                }}
+                                onClick={() => setEdit(false)}
+                            >
+                                Cancel
+                            </Button>
                         </>
                     ) : (
                         <>
-                            <Typography variant="h5" component="h3">
-                                {idx + 1}.&nbsp;{book.title}
-                                <p>{book.description}</p>
+                            <Typography className='card-content' variant="h5" component="h3">
+                                <h3 className='card-heading'>{idx + 1}.&nbsp;{book.title}</h3>
+                                <p className='card-description'>{book.description}</p>
                             </Typography>
-                            <Box sx={{m: 2}}>
-                                <Button
-                                    variant="outlined"
-                                    endIcon={<DeleteOutline/>}
-                                    style={{
-                                        borderColor: "rgba(236,5,5,0.54)",
-                                        color: "rgb(236,5,5,0.54)",
-                                        backgroundColor: "rgb(221,232,238)",
-                                    }}
-                                    onClick={() => handleDeleteBook(book.id)}
-                                >
-                                    Delete
-                                </Button>
-                                <Button
-                                    variant="outlined"
-                                    endIcon={<EditOutlined/>}
-                                    style={{
-                                        backgroundColor: "rgb(248,250,244)",
-                                    }}
-                                    onClick={() => {
-                                        setEdit(true);
-                                        setData({...data, title: book.title, description: book.description})
-                                    }}
-                                >
-                                    Edit
-                                </Button>
-                            </Box>
+                            <Button
+                                sx={{mx: 3}}
+                                variant="outlined"
+                                endIcon={<DeleteOutline/>}
+                                style={{
+                                    borderColor: "rgba(236,5,5,0.54)",
+                                    color: "rgb(236,5,5,0.54)",
+                                    backgroundColor: "rgb(221,232,238)",
+                                }}
+                                onClick={() => handleDeleteBook(book.id)}
+                            >
+                                Delete
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                endIcon={<EditOutlined/>}
+                                style={{
+                                    backgroundColor: "rgb(248,250,244)",
+                                }}
+                                onClick={() => {
+                                    setEdit(true);
+                                    setData({...data, title: book.title, description: book.description})
+                                }}
+                            >
+                                Edit
+                            </Button>
                         </>
                     )
                 }

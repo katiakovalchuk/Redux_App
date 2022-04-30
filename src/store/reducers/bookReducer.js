@@ -9,7 +9,6 @@ const initialState = {
 const bookReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_BOOK:
-            // console.log(state);
             return {
                 ...state,
                 bookList: [...state.bookList, action.payload]
@@ -33,12 +32,10 @@ const bookReducer = (state = initialState, action) => {
             return {
                 ...state,
                 bookList: editedBookList
-                // bookList: [...state.bookList.filter(book => book.id !== action.payload.id), {...action.payload, key: action.payload.id }]
             }
 
         default:
-            // console.log(action);
-            // console.log(state);
+
             return state;
     }
 }
