@@ -28,7 +28,7 @@ const bookReducer = (state = initialState, action) => {
                     description: action.payload.description
                 }
             ) : book)
-            console.log(editedBookList);
+
             return {
                 ...state,
                 bookList: editedBookList

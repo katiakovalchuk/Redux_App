@@ -1,15 +1,13 @@
-import {useContext, useState} from 'react';
+import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {addBook} from '../store/actions/actions';
-import ThemeContext from '../context/ThemeContext';
 import '../index.css';
 
 import {Box, Button, TextField} from '@mui/material';
 
 
 const Form = () => {
-    const theme = useContext(ThemeContext);
     const initialState = {title: '', description: ''};
     const dispatch = useDispatch();
     const [{title, description}, setBook] = useState(initialState);
@@ -29,7 +27,7 @@ const Form = () => {
 
     return (
         <Box sx={{mt: 10}}>
-            <form className='form' style={theme} onSubmit={handleAddBook}>
+            <form className='form' onSubmit={handleAddBook}>
                 <h2>Please enter book title and description to add a new book</h2>
                 <TextField
                     id="outlined-basic"

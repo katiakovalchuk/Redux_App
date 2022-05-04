@@ -12,11 +12,18 @@ code {
     monospace;
 }
 
+.booklist-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .card-content{
     font-style: italic;
 }
 .card-heading{
     font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
 }
 
 .card-description{
@@ -27,3 +34,4 @@ code {
 .form{
     padding: 15px 20px;
 }
+

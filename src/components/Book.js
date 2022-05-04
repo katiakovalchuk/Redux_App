@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {deleteBook, editBook} from "../store/actions/actions";
+import {useTheme} from '../context/ThemeContext';
 import '../index.css';
 
 import {Card, CardContent, Typography} from '@material-ui/core';
@@ -9,12 +10,13 @@ import {Button, TextField} from '@mui/material';
 import {DeleteOutline, EditOutlined} from '@material-ui/icons';
 
 const Book = ({book, idx}) => {
+    const {theme} = useTheme();
     const dispatch = useDispatch();
     const [edit, setEdit] = useState(false);
     const [data, setData] = useState({
         title: false,
         description: false
-    })
+    });
 
     const handleDeleteBook = id => {
         dispatch(deleteBook(id));
@@ -32,7 +34,7 @@ const Book = ({book, idx}) => {
     return (
         <Card
             variant="outlined"
-            style={{marginTop: 35, background: "lightcyan"}}
+            style={{...theme, marginTop: 35}}
         >
             <CardContent>
                 {
@@ -42,6 +44,7 @@ const Book = ({book, idx}) => {
                                 label='Edit book title'
                                 fullWidth
                                 required
+                                sx={{ input: { color: theme.color }, marginTop: 3 }}
                                 value={data.title}
                                 onChange={e => setData(prev => ({...prev, title: e.target.value}))}
                             />
@@ -52,7 +55,7 @@ const Book = ({book, idx}) => {
                                 rows={4}
                                 fullWidth
                                 required
-                                style={{marginTop: 20}}
+                                sx={{ textarea: { color: theme.color }, marginTop: 5 }}
                                 value={data.description}
                                 onChange={e => setData(prev => ({...prev, description: e.target.value}))}
                             />
@@ -84,7 +87,7 @@ const Book = ({book, idx}) => {
                     ) : (
                         <>
                             <Typography className='card-content' variant="h5" component="h3">
-                                <h3 className='card-heading'>{idx + 1}.&nbsp;{book.title}</h3>
+                                <div className='card-heading'>{idx + 1}.&nbsp;{book.title}</div>
                                 <p className='card-description'>{book.description}</p>
                             </Typography>
                             <Button
